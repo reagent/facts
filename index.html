@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Facts Archive</title>
+  <meta name="description" content="A collection of verified facts from recent events, presented with sources.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="container">
+    <header class="site-header">
+      <h1>Facts Archive</h1>
+      <div class="subtitle">Verified facts · Sourced · Shareable</div>
+    </header>
+
+    <div class="fact-card" id="factCard">
+      <div class="fact-number" id="factNumber"></div>
+      <div class="fact-text" id="factText"></div>
+      <div class="fact-source" id="factSource"></div>
+    </div>
+
+    <div class="actions">
+      <button class="btn" id="newFactBtn" onclick="showRandomFact()">
+        <svg viewBox="0 0 24 24"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+        New Fact
+      </button>
+      <div class="btn-group">
+        <button class="btn" onclick="copyLink()">
+          <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          Copy Link
+        </button>
+        <button class="btn" onclick="showQR()">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zm4 0h3v3h-3zm-4 4h3v3h-3zm4 0h3v3h-3z"/></svg>
+          QR Code
+        </button>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      Facts are sourced from public reporting. See linked sources for full context.
+    </footer>
+  </div>
+
+  <!-- QR Modal -->
+  <div class="qr-overlay" id="qrOverlay" onclick="closeQR(event)">
+    <div class="qr-modal">
+      <h3>Scan to share this fact</h3>
+      <canvas id="qrCanvas"></canvas>
+      <div class="qr-url" id="qrUrl"></div>
+      <button class="qr-close" onclick="closeQR()">Close</button>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast">Link copied to clipboard</div>
+
+  <!-- QR Code Generator (qrcode-generator, MIT license, ~4KB) -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+
+  <!-- Facts data -->
+  <script src="facts.js"></script>
+
+  <!-- App logic -->
+  <script src="app.js"></script>
+</body>
+</html>
